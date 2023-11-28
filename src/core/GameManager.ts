@@ -52,8 +52,21 @@ class GameManager extends EventEmitter {
     }
 
     public restart() {
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const startParam = urlParams.get("start");
+        if (startParam !== null) {
+            if (confirm(`注意：\n你即将跳转到不属于本站的未知网页 https://${startParam} \n\n宇宙安全免责声明：\n你即将访问的网页和本站没有任何关联，\n也与《原神》或其母公司miHoYo没有任何关联，\n请自行甄别，本站不承担任何直接或间接的后果！！！\n\n “确定”继续访问，“取消”跳回主页`)) {
+                window.location.href = `https://${startParam}`
+            } else {
+                location.reload();
+            }
+        } else {
+            window.location.href = 'https://www.bilibili.com/video/BV1E8411v7xy'
+        }
+        
         // location.reload();
-        window.location.href = 'https://www.bilibili.com/video/BV1E8411v7xy'
+        // window.location.href = 'https://www.bilibili.com/video/BV1E8411v7xy'
     }
     public task(handle: Function | Promise<any>, props = {}) {
         return this.taskManger.task(handle, props);

@@ -8,18 +8,46 @@ export function Menu() {
   const [doorCreate, setDoorCreate] = useState(false);
   const [openDoor, setOpenDoor] = useState(false);
 
+  // 统计
   useEffect(() => {
-    gameManager.on("doorCreate", () => {
-      setDoorCreate(true)
-    }, true, true);
-    gameManager.on("openDoor", () => {
-      setOpenDoor(true)
-      setMenu12(false)
-    }, true, true);
-    setTimeout(() => {
-      setLogin(true);
-      setMenu12(true)
-    }, 500);
+    const myScript = document.createElement('script');
+    myScript.src = "https://count.chairo.cc/script.js";
+    myScript.async = true;
+    myScript.setAttribute('data-website-id', 'c4bf47ca-3880-4168-ab99-277056592b67');
+    document.body.appendChild(myScript);
+    return () => {
+        document.body.removeChild(myScript);
+    };
+  }, []);
+  // 统计
+
+  useEffect(() => {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isWallpaperMode = urlParams.get("wallpaper");
+    const startParam = urlParams.get("start");
+    if (startParam) {
+      const descriptionElement = document.querySelector(".description");
+      if (descriptionElement) {
+          descriptionElement.style.display = "none";
+      }
+    }
+    if (isWallpaperMode === '1') {
+      setMenu12(false);
+    } else {
+
+      gameManager.on("doorCreate", () => {
+        setDoorCreate(true);
+      }, true, true);
+      gameManager.on("openDoor", () => {
+        setOpenDoor(true);
+        setMenu12(false);
+      }, true, true);
+        setTimeout(() => {
+        setLogin(true);
+        setMenu12(true);
+      }, 500);
+    }
   }, [])
 
   return (
@@ -31,19 +59,28 @@ export function Menu() {
           <div className="description">
             <p>免责声明：</p>
             <p>本网站是一个纯粹的技术示例，旨在展示和分享我们的技术能力。网站的设计和内容受到《原神》的启发，并尽可能地复制了《原神》的登录界面。我们对此表示敬意，并强调这个项目不是官方的《原神》产品，也没有与《原神》或其母公司miHoYo有任何关联。</p>
-            <p>我们没有，也无意从这个项目中获得任何经济利益。这个网站的所有内容仅供学习和研究目的，以便让更多的人了解和熟悉webgl开发技术。</p>
+            <p>我们没有，也无意从这个项目中获得任何经济利益。这个网站的所有内容仅供学习和研究目的，以便让更多的人了解和熟悉WebGL开发技术。</p>
             <p>如果miHoYo或任何有关方面认为这个项目侵犯了他们的权益，请联系我们，我们会立即采取行动。</p>
+            <p>注意，本站只是代理挂载展示，并无其他作用。</p>
           </div>
         </div>
         <button className="ClickMe" onClick={login ? () => {
+
+          // 统计
+          const urlParams = new URLSearchParams(window.location.search);
+          const startParam = urlParams.get("start");
+          umami.track(startParam);
+          // 统计
+          
           gameManager.emit("button-start-click");
-          gameManager.emit("start")
-          setLogin(false)
+          gameManager.emit("start");
+          setLogin(false);
         } : () => { }}></button>
         <button className="ClickMe" style={{
           bottom: "16%",
           backgroundImage: `url("/Genshin/jump.png")`
         }} onClick={login ? () => {
+          alert('免责声明：\n\n本网站是一个纯粹的技术示例，旨在展示和分享我们的技术能力。网站的设计和内容受到《原神》的启发，并尽可能地复制了《原神》的登录界面。我们对此表示敬意，并强调这个项目不是官方的《原神》产品，也没有与《原神》或其母公司miHoYo有任何关联。\n\n我们没有，也无意从这个项目中获得任何经济利益。这个网站的所有内容仅供学习和研究目的，以便让更多的人了解和熟悉WebGL开发技术。\n\n如果miHoYo或任何有关方面认为这个项目侵犯了他们的权益，请联系我们，我们会立即采取行动。');
           window.open('https://www.bilibili.com/video/BV1E8411v7xy');
         } : () => { }}></button>
       </div>
