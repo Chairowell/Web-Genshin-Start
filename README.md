@@ -29,11 +29,10 @@
 示例：
 
 https://localhost:5173/?wallpaper=1
-
-
+![image](https://github.com/Chairowell/web-genshin-start/assets/64683147/bbe10948-d93c-40dd-aa82-69a3ae57a1b2)
 
 https://localhost:5173/?start=www.example.com
-
+![image](https://github.com/Chairowell/web-genshin-start/assets/64683147/3b27166f-65d5-433c-bbd1-ebdb524142ca)
 
 
 如果你想复刻，请去除`Menu.tsx`中两处`// 统计`中的代码
