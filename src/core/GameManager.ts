@@ -13,9 +13,9 @@ class TaskManager {
     public task(handle: Function | Promise<any>, { name = "", weight = 1 } = {}) {
         this._regist(weight);
         return this._resolve
-            .then(() => typeof handle === "function" ? handle() : handle)
-            .then(() => this._finish(weight, name))
-            .catch(err => {
+            。then(() => typeof handle === "function" ? handle() : handle)
+            。then(() => this._finish(weight, name))
+            。catch(err => {
                 this._finish(weight, name);
                 console.error(err);
             });
@@ -62,7 +62,7 @@ class GameManager extends EventEmitter {
                 location.reload();
             }
         } else {
-            window.location.href = 'https://www.bilibili.com/video/BV1E8411v7xy'
+            window.location.href = 'https://github.com/Chairowell/web-genshin-start'
         }
         
         // location.reload();
