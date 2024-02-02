@@ -25,7 +25,7 @@
 
 - 在网页后添加参数?wallpaper=1，可关闭所有UI当作壁纸使用（使用Lively Wallpaper或者Wallpaper Engine）
 - 在网页后添加参数?start={所要启动的网站}（不含http或https协议头），可在点击后启动该网站
-- 启动原神客户端：https://localhost:5173/?start=yuanshengame://
+
 
 示例：
 
