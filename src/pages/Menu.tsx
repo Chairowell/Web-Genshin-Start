@@ -13,7 +13,7 @@ export function Menu() {
     const myScript = document.createElement('script');
     myScript.src = "https://count.chairo.cc/script.js";
     myScript.async = true;
-    myScript.setAttribute('data-website-id', 'c4bf47ca-3880-4168-ab99-277056592b67');
+    myScript.setAttribute('data-website-id', 'c981031b-8521-4d0d-8379-1e52725b2e6c');
     document.body.appendChild(myScript);
     return () => {
         document.body.removeChild(myScript);
