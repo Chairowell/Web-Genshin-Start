@@ -58,9 +58,7 @@ export function Menu() {
         <button className="ClickMe" onClick={login ? () => {
 
           // 统计
-          const urlParams = new URLSearchParams(window.location.search);
-          const startParam = urlParams.get("start");
-          umami.track(startParam);
+
           // 统计
           
           gameManager.emit("button-start-click");
