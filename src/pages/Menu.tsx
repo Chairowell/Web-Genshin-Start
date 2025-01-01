@@ -9,16 +9,7 @@ export function Menu() {
   const [openDoor, setOpenDoor] = useState(false);
 
   // 统计
-  useEffect(() => {
-    const myScript = document.createElement('script');
-    myScript.src = "https://count.chairo.cc/script.js";
-    myScript.async = true;
-    myScript.setAttribute('data-website-id', 'c981031b-8521-4d0d-8379-1e52725b2e6c');
-    document.body.appendChild(myScript);
-    return () => {
-        document.body.removeChild(myScript);
-    };
-  }, []);
+
   // 统计
 
   useEffect(() => {
